@@ -1,0 +1,837 @@
+<!DOCTYPE html><html lang="en-US"><head>
+    <title>LuaObfuscator - Playground</title>
+    <style>
+        html {
+            /* Only here so we don't get a bright white flash while page loads! */
+            background-color: #1e1e1e;
+            color: lightblue;
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/code-lua.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Online Lua Obfuscator. Beautify/Minify/Obfuscate all the lua dialects, including LuaU, gLua, Pluto and vanilla Lua 5.1 (and above).">
+    <meta name="keywords" content="Lua Obfuscator, Online Lua Obfuscation, Lua Beautifier, Lua Minifier, Lua deobfuscator, obfuscator, lua, deobfuscation, roblox obfuscator, roblox protection, packer, crypter, lua emulator, FiveM Obfuscator, LuaU beautifier, Luraph beautifier, Pluto Beautifier, LuaU minifier, OSRS Plugins, Roblox whitelist">
+    <meta property="og:title" content="Online Lua Obfuscator">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:description" content="Online Lua Obfuscator. Beautify/Minify/Obfuscate all the lua dialects, including LuaU, gLua, Pluto and vanilla Lua 5.1 (and above).">
+    <meta property="og:url" content="https://luaobfuscator.com">
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&amp;family=VT323&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container" style="height: 100% !important">
+        <style>
+    .line {
+        position: absolute;
+        height: 5px;
+        background-color: black;
+    }
+</style>
+<style>
+    #container {
+        position: relative;
+        width: 600px;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .bg1 {
+        background: radial-gradient(circle at top left, #ffcc00, #ff6600);
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+
+    .bg2 {
+        background: radial-gradient(circle at bottom right, #0066ff, #0033cc);
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+
+    svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+</style>
+
+
+
+
+<div class="notepad-body">
+
+    <!-- MAIN CONTENT START -->
+    <div id="home-landing" class="notepad-test">
+        <div id="home-scroll" class="notepad-script" style="display:block;">
+
+            <!-- Home Page START -->
+            <article id="home-landingpage" class="content-landing" style="display:flex;">
+                <div class="home-page-content" id="home-page-start" style="
+	border-radius: 0% 0% 50% 50% / 10%;
+	background-image: url(images/roblox_4_big.webp);
+	background-position: center;
+	box-shadow: inset 0px -3px 6px 0px black;
+    overflow-x: hidden;
+    ">
+                    <div style="display:flex; justify-content:center; align-items:center;">
+                        <div class="home-ribbon-background2" style="opacity: 0.8">
+                            <span style="color: lime;">308.9$ / 65.3$</span>
+                            <br><br>
+                            <span>Yearly hosting goal</span>
+                        </div>
+                        <div class="home-ribbon-background" style="opacity: 0.8">
+                            <span style="color: lime;">308.9$ / 65.3$</span>
+                            <br><br>
+                            <span>Yearly hosting goal</span>
+                        </div>
+                    </div>
+                
+                    <div class="home-ribbon-background1">
+                        <span style="color: lime;">308.9$ / 65.3$</span>
+                        <br><br>
+                        <span>Yearly hosting goal</span>
+                    </div>                
+                        <a class="home-ribbon" href="https://github.com/sponsors/ferib">Donate on GitHub 🥰</a>
+                    
+                    <div class="home-page-container">
+                        <div class="home-page-row">
+                            <div id="fake-progress-bar">
+                                <div class="progress-bar-back">
+                                    <div class="progress-bar-back-inner"></div>
+                                </div>
+                                <span class="b-inline">Loading please wait...</span>
+                            </div>
+                            <div id="home-lua-actions" class="home-info">
+                                <h1>Protect your Lua Scripts Today!</h1>
+                                <p>You are 2 clicks away from obfuscating your Lua Script! Use the action buttons on the right to select from a wide range of obfuscation features after clicking New File or Upload File.</p>
+                                <div class="button-box">
+                                    <div id="btn-demo" style="cursor: not-allowed" class="big-pink-btn btn-disabled">New File</div>
+                                    <div id="btn-uploadfile" style="cursor: not-allowed; background: #00000060;" class="big-pink-btn-light btn-disabled">Upload File</div>
+                                </div>
+                                <div class="button-box">
+                                    <span id="wait-banner" class="note-homepage">Making sure you ain't a robot...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="home-padding"></div>-->
+                </div>
+
+
+                <!-- Stats Flex -->
+                <div class="home-page-content stats-flex" style="
+    /* background: linear-gradient(180deg, rgb(30 30 30 / 0%) 10%, #000000 40%); */
+    padding-bottom: 0;
+    overflow: hidden;
+    /* background: black; */
+    ">
+                    <!-- Background div -->
+                    <div style="
+                        position: absolute;
+                        display: block;
+                        background: linear-gradient(180deg, rgb(30 30 30 / 0%) 0%, #000000 65%);
+                        height: 100%;
+                        width: 100%;
+                        clip-path: path('M 0 0 H 1200 V 112 L 1072 110 L 900 175 L 590 240 L 380 310 L 292 385 L 120 445 L 0 550 Z');
+                        width: 1200px;
+                        right: 0;
+                    "></div>
+                    <div style="
+                        position: absolute;
+                        display: block;
+                        background: linear-gradient(180deg, rgb(30 30 30 / 0%) 0%, #000000 65%);
+                        height: 100%;
+                        width: 100%;
+                        width: calc(100% - 1200px);
+                        left: 0;
+                    "></div>
+
+                    <div class="home-page-container" style="max-width: 100%;">
+                        <div class="img-desktop" style="
+position: absolute;
+    right: -240px;
+    height: 400px;
+    top: -10px;">
+                            
+                        </div>
+                        <div class="home-page-row" style="margin-left: 0;filter: saturate(0.8);">
+                            <div class="home-info" style="
+    /* position: absolute; */
+    height: auto;
+    padding-bottom: 36px;
+    width: 100%;
+">
+                                <h2 class="big-text-desktop" style="color:var(--primary);margin-left: 72px;">Trusted by 5855 registered users!</h2>
+
+
+<!-- Background Chart START -->
+<div style="
+    position: relative;
+    width: 100%;
+    height: 400px;
+">
+
+    <!-- text -->
+    <div style="
+    position: relative;
+    height: auto;
+">
+    <p style="
+        text-align: left;
+        float: left;
+        margin-left: 72px;
+        margin-bottom: 2.5rem;
+        font-size: 1.15rem;
+        color: var(--white);
+        line-height: 1.5;
+        ">Our stats don't lie, simply trusted by thousands of Lua users<br>Weekly stats include over 50 thousand files being protected!<br><br>Most of which are Roblox</p>
+</div>
+
+    <!-- container line START -->
+<div style="
+    width: 100%;
+    height: 100%;
+    /* display: flex; */
+    position: absolute;
+    z-index: 3;
+">
+    <div style="
+        position: absolute;
+        display: block;
+        width: 195px;
+        height: 5px;
+        background: indianred;
+        right: 115px;
+        top: 32px;
+        transform: rotateZ(341deg);
+    "></div>
+    <div style="
+        position: absolute;
+        display: block;
+        width: 342px;
+        height: 5px;
+        background: indianred;
+        right: 298px;
+        top: 99px;
+        transform: rotateZ(348deg);
+    "></div>
+    <div style="
+        position: absolute;
+        display: block;
+        width: 208px;
+        height: 5px;
+        background: indianred;
+        right: 622px;
+        top: 167px;
+        transform: rotateZ(341deg);
+    "></div>
+    <div style="
+        position: absolute;
+        display: block;
+        width: 110px;
+        height: 5px;
+        background: indianred;
+        right: 808px;
+        top: 233px;
+        transform: rotateZ(321deg);
+    "></div>
+    <div style="
+        position: absolute;
+        display: block;
+        width: 193px;
+        height: 5px;
+        background: indianred;
+        right: 893px;
+        top: 299px;
+        transform: rotateZ(339deg);
+    "></div>
+    <div style="
+        position: absolute;
+        display: block;
+        width: 164px;
+        height: 5px;
+        background: indianred;
+        right: 1059px;
+        top: 385px;
+        transform: rotateZ(320deg);
+    "></div>
+</div>
+    <!-- container line EMD -->
+
+    <!-- container numbers START-->
+    <div style="
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    filter: contrast(0.8);
+">
+    <div style="
+        margin-right: 0;
+        margin-top: 0;
+        height: 100%;
+        font-size: 32px;
+        line-height: 50px;
+    ">12000</div>
+    <div style="
+        margin-right: 0;
+        margin-top: 0;
+        height: 100%;
+        font-size: 32px;
+        line-height: 50px;
+    ">10000</div>
+    <div style="
+        margin-right: 0;
+        margin-top: 0;
+        height: 100%;
+        font-size: 32px;
+        line-height: 50px;
+    ">8000</div>
+    <div style="
+        margin-right: 0;
+        margin-top: 0;
+        height: 100%;
+        font-size: 32px;
+        line-height: 50px;
+    ">6000</div>
+    <div style="
+        margin-right: 0;
+        margin-top: 0;
+        height: 100%;
+        font-size: 32px;
+        line-height: 50px;
+    ">4000</div>
+    <div style="
+        margin-right: 0;
+        margin-top: 0;
+        height: 100%;
+        font-size: 32px;
+        line-height: 50px;
+    ">2000</div>
+    </div>
+    <!-- container numbers END-->
+
+    <!-- container horizontal line START -->
+<div style="
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+">
+    <div style="
+        height: 5px;
+        background: indianred;
+        width: 121px;
+        margin-right: 0;
+        margin-top: 0;
+    "></div>
+    <div style="
+        height: 5px;
+        background: var(--color-background-light-2);
+        width: 300px;
+        margin-right: 0;
+        margin-top: 0;
+    "></div>
+    <div style="
+        height: 5px;
+        background: var(--color-background-light-2);
+        width: 636px;
+        margin-right: 0;
+        margin-top: 0;
+    "></div>
+    <div style="
+        height: 5px;
+        background: var(--color-background-light-2);
+        width: 828px;
+        margin-right: 0;
+        margin-top: 0;
+    "></div>
+    <div style="
+        height: 5px;
+        background: var(--color-background-light-2);
+        width: 900px;
+        margin-right: 0;
+        margin-top: 0;
+    "></div>
+    <div style="
+        height: 5px;
+        background: var(--color-background-light-2);
+        width: 1077px;
+        margin-right: 0;
+        margin-top: 0;
+    "></div>
+    <div style="
+        height: 5px;
+        margin-right: 0;
+        margin-top: 0;
+        margin: 0;
+        position: relative;
+        bottom: -36px;
+        background: indianred;
+        position: absolute;
+        width: 100%;
+    "></div>
+    <div style="
+        height: 5px;
+        margin-right: 0;
+        position: relative;
+        bottom: -36px;
+        background: var(--color-background-light-2);
+        position: absolute;
+        width: 96%;
+        right: 0;
+        width: 1197px;
+    "></div>
+        <!-- Background Chart END -->
+    
+    </div>
+    <!-- container horizontal line END -->
+</div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+                <!-- REST API -->
+                <div class="home-page-content" style="padding-bottom: 0">
+                    <div class="home-page-container">
+                        <!--
+                        <div class="img-desktop" style="
+position: absolute;
+    left: -220px;
+    height: 600px;
+    top: -10px;">
+                            <img style="    
+    height: 100%;
+    width: 100%;" src="./img/cogwheels.png" width="300" height="300" />
+                        -->
+                        <div class="img-desktop" style="
+    position: absolute;
+    left: -140px;
+    height: 430px;
+    top: 10px;">
+                            <img alt="doodle cogwheel big" style="    
+        height: 100%;
+        width: 100%;" src="images/cogwheel_a.png" id="cogwheel_a" width="215" height="211">
+                        </div>
+                        <div class="img-desktop" style="
+    position: absolute;
+    height: 192px;
+    left: 148px;
+    top: 378px;">
+                            <img alt="doodle cogwheel small" style="
+    height: 100%;
+    width: 100%;" src="images/cogwheel_b.png" id="cogwheel_b" width="96" height="99">
+                        </div>
+
+                        <div class="home-page-row">
+                            <div class="home-info" style="
+    width: 80%;
+    margin-right: 30px;">
+                                <h2 class="big-text-desktop" style="color:var(--primary); float:right;">Say hello to automation 🤖</h2>
+                                <p style="
+    float: right;
+    text-align: right;">Begin automating your obfuscation requirements today. Get your <a href="/forum/keys">API Key</a> and access our API Docs to initiate your journey.
+                                </p>
+                                <div class="button-box" style="justify-content: flex-end;">
+                                    <a href="/forum/docs">
+                                        <div class="big-pink-btn">Read the docs</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-page-content" style="
+    background: linear-gradient(180deg,rgb(30 30 30 / 0%) 0%,rgba(0,0,0,1) 100%);
+	padding-bottom: 0;overflow: hidden;">
+                    <div class="home-page-container">
+                        <div class="img-desktop" style="
+position: absolute;
+    right: -240px;
+    height: 400px;
+    top: -10px;">
+                            <img alt="doodle discord logo" style="
+    height: 100%;
+    width: 100%;" src="images/discord.png" width="300" height="300">
+                        </div>
+                        <div class="home-page-row" style="margin-left: 0; filter: saturate(0.8);">
+                            <div class="home-info">
+                                <h2 class="big-text-desktop" style="color:var(--primary)">Join the community!</h2>
+                                <p>Our beloved Discord server may be a thing of the past, but fear not, for we have created a new haven for unrestricted conversation and free expression!</p>
+                                <div class="button-box" style="justify-content: flex-start; filter: saturate(0.7);">
+                                    <div id="fire-container"><div class="particle" style="left: calc(0% + 0em); animation-delay: 0.754526s;"></div><div class="particle" style="left: calc(1.66667% - 0.0833333em); animation-delay: 1.45936s;"></div><div class="particle" style="left: calc(3.33333% - 0.166667em); animation-delay: 1.04511s;"></div><div class="particle" style="left: calc(5% - 0.25em); animation-delay: 2.72625s;"></div><div class="particle" style="left: calc(6.66667% - 0.333333em); animation-delay: 2.50136s;"></div><div class="particle" style="left: calc(8.33333% - 0.416667em); animation-delay: 1.84779s;"></div><div class="particle" style="left: calc(10% - 0.5em); animation-delay: 2.59828s;"></div><div class="particle" style="left: calc(11.6667% - 0.583333em); animation-delay: 0.694433s;"></div><div class="particle" style="left: calc(13.3333% - 0.666667em); animation-delay: 0.667427s;"></div><div class="particle" style="left: calc(15% - 0.75em); animation-delay: 1.49541s;"></div><div class="particle" style="left: calc(16.6667% - 0.833333em); animation-delay: 1.11421s;"></div><div class="particle" style="left: calc(18.3333% - 0.916667em); animation-delay: 2.9826s;"></div><div class="particle" style="left: calc(20% - 1em); animation-delay: 0.00733756s;"></div><div class="particle" style="left: calc(21.6667% - 1.08333em); animation-delay: 2.18707s;"></div><div class="particle" style="left: calc(23.3333% - 1.16667em); animation-delay: 0.871619s;"></div><div class="particle" style="left: calc(25% - 1.25em); animation-delay: 0.285649s;"></div><div class="particle" style="left: calc(26.6667% - 1.33333em); animation-delay: 3.93697s;"></div><div class="particle" style="left: calc(28.3333% - 1.41667em); animation-delay: 2.47673s;"></div><div class="particle" style="left: calc(30% - 1.5em); animation-delay: 2.72949s;"></div><div class="particle" style="left: calc(31.6667% - 1.58333em); animation-delay: 0.152653s;"></div><div class="particle" style="left: calc(33.3333% - 1.66667em); animation-delay: 1.36903s;"></div><div class="particle" style="left: calc(35% - 1.75em); animation-delay: 1.96867s;"></div><div class="particle" style="left: calc(36.6667% - 1.83333em); animation-delay: 1.3627s;"></div><div class="particle" style="left: calc(38.3333% - 1.91667em); animation-delay: 3.15675s;"></div><div class="particle" style="left: calc(40% - 2em); animation-delay: 3.24359s;"></div><div class="particle" style="left: calc(41.6667% - 2.08333em); animation-delay: 0.648163s;"></div><div class="particle" style="left: calc(43.3333% - 2.16667em); animation-delay: 1.71362s;"></div><div class="particle" style="left: calc(45% - 2.25em); animation-delay: 2.53031s;"></div><div class="particle" style="left: calc(46.6667% - 2.33333em); animation-delay: 3.67611s;"></div><div class="particle" style="left: calc(48.3333% - 2.41667em); animation-delay: 2.08381s;"></div><div class="particle" style="left: calc(50% - 2.5em); animation-delay: 1.73109s;"></div><div class="particle" style="left: calc(51.6667% - 2.58333em); animation-delay: 1.5307s;"></div><div class="particle" style="left: calc(53.3333% - 2.66667em); animation-delay: 2.32628s;"></div><div class="particle" style="left: calc(55% - 2.75em); animation-delay: 3.45155s;"></div><div class="particle" style="left: calc(56.6667% - 2.83333em); animation-delay: 0.148741s;"></div><div class="particle" style="left: calc(58.3333% - 2.91667em); animation-delay: 2.75836s;"></div><div class="particle" style="left: calc(60% - 3em); animation-delay: 0.959197s;"></div><div class="particle" style="left: calc(61.6667% - 3.08333em); animation-delay: 0.643121s;"></div><div class="particle" style="left: calc(63.3333% - 3.16667em); animation-delay: 1.5257s;"></div><div class="particle" style="left: calc(65% - 3.25em); animation-delay: 0.905934s;"></div><div class="particle" style="left: calc(66.6667% - 3.33333em); animation-delay: 2.38481s;"></div><div class="particle" style="left: calc(68.3333% - 3.41667em); animation-delay: 3.78128s;"></div><div class="particle" style="left: calc(70% - 3.5em); animation-delay: 1.23609s;"></div><div class="particle" style="left: calc(71.6667% - 3.58333em); animation-delay: 0.125058s;"></div><div class="particle" style="left: calc(73.3333% - 3.66667em); animation-delay: 0.210579s;"></div><div class="particle" style="left: calc(75% - 3.75em); animation-delay: 0.593374s;"></div><div class="particle" style="left: calc(76.6667% - 3.83333em); animation-delay: 3.34931s;"></div><div class="particle" style="left: calc(78.3333% - 3.91667em); animation-delay: 1.44331s;"></div><div class="particle" style="left: calc(80% - 4em); animation-delay: 3.90295s;"></div><div class="particle" style="left: calc(81.6667% - 4.08333em); animation-delay: 0.193798s;"></div><div class="particle" style="left: calc(83.3333% - 4.16667em); animation-delay: 0.254521s;"></div><div class="particle" style="left: calc(85% - 4.25em); animation-delay: 1.67741s;"></div><div class="particle" style="left: calc(86.6667% - 4.33333em); animation-delay: 1.45174s;"></div><div class="particle" style="left: calc(88.3333% - 4.41667em); animation-delay: 3.79588s;"></div><div class="particle" style="left: calc(90% - 4.5em); animation-delay: 0.757623s;"></div><div class="particle" style="left: calc(91.6667% - 4.58333em); animation-delay: 2.0269s;"></div><div class="particle" style="left: calc(93.3333% - 4.66667em); animation-delay: 3.09008s;"></div><div class="particle" style="left: calc(95% - 4.75em); animation-delay: 2.89627s;"></div><div class="particle" style="left: calc(96.6667% - 4.83333em); animation-delay: 0.587524s;"></div><div class="particle" style="left: calc(98.3333% - 4.91667em); animation-delay: 2.80513s;"></div><div class="particle" style="left: calc(100% - 5em); animation-delay: 2.23685s;"></div><div class="particle" style="left: calc(101.667% - 5.08333em); animation-delay: 2.19974s;"></div><div class="particle" style="left: calc(103.333% - 5.16667em); animation-delay: 0.0837722s;"></div><div class="particle" style="left: calc(105% - 5.25em); animation-delay: 0.396409s;"></div><div class="particle" style="left: calc(106.667% - 5.33333em); animation-delay: 3.36291s;"></div><div class="particle" style="left: calc(108.333% - 5.41667em); animation-delay: 3.63879s;"></div><div class="particle" style="left: calc(110% - 5.5em); animation-delay: 3.29175s;"></div><div class="particle" style="left: calc(111.667% - 5.58333em); animation-delay: 3.94344s;"></div><div class="particle" style="left: calc(113.333% - 5.66667em); animation-delay: 0.738511s;"></div><div class="particle" style="left: calc(115% - 5.75em); animation-delay: 2.83386s;"></div><div class="particle" style="left: calc(116.667% - 5.83333em); animation-delay: 3.92424s;"></div><div class="particle" style="left: calc(118.333% - 5.91667em); animation-delay: 3.52761s;"></div><div class="particle" style="left: calc(120% - 6em); animation-delay: 1.40391s;"></div><div class="particle" style="left: calc(121.667% - 6.08333em); animation-delay: 3.10131s;"></div><div class="particle" style="left: calc(123.333% - 6.16667em); animation-delay: 1.23173s;"></div><div class="particle" style="left: calc(125% - 6.25em); animation-delay: 1.45227s;"></div><div class="particle" style="left: calc(126.667% - 6.33333em); animation-delay: 3.2213s;"></div><div class="particle" style="left: calc(128.333% - 6.41667em); animation-delay: 3.35617s;"></div><div class="particle" style="left: calc(130% - 6.5em); animation-delay: 2.50121s;"></div><div class="particle" style="left: calc(131.667% - 6.58333em); animation-delay: 3.01846s;"></div><div class="particle" style="left: calc(133.333% - 6.66667em); animation-delay: 2.83541s;"></div><div class="particle" style="left: calc(135% - 6.75em); animation-delay: 1.4399s;"></div><div class="particle" style="left: calc(136.667% - 6.83333em); animation-delay: 2.04055s;"></div><div class="particle" style="left: calc(138.333% - 6.91667em); animation-delay: 2.04407s;"></div><div class="particle" style="left: calc(140% - 7em); animation-delay: 3.80678s;"></div><div class="particle" style="left: calc(141.667% - 7.08333em); animation-delay: 2.10944s;"></div><div class="particle" style="left: calc(143.333% - 7.16667em); animation-delay: 2.5821s;"></div><div class="particle" style="left: calc(145% - 7.25em); animation-delay: 1.06082s;"></div><div class="particle" style="left: calc(146.667% - 7.33333em); animation-delay: 0.0912432s;"></div><div class="particle" style="left: calc(148.333% - 7.41667em); animation-delay: 0.425432s;"></div></div>
+                                    <a href="https://discord.gg/vYrmxByrWq">
+                                        <!--<div class="big-pink-btn" style="margin-right: 10px; border: 3px solid darkgray; background-color: gray!important; cursor:not-allowed; text-decoration: line-through">Discord 😵</div>-->
+                                        <div class="big-pink-btn" style="margin-right: 10px; box-shadow: 2px 2px 5px 2px red; color:red;">Discord 🚀</div>
+                                    </a>
+                                    <a href="/forum/">
+                                        <div class="big-pink-btn-light">Visit Community</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+
+            </article>
+            <footer class="home-footer-dark">
+                <div style="padding: 12px; opacity: 0.2">
+                    <span>Copyrighted 2022-2024</span> - <span><a href="/privacy_policy.txt">Privacy</a></span>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <div id="home-ide" class="notepad-test" style="display: none; /* default not shown? */">
+        
+        <div id="cf-turnstile"></div> <!-- class="cf-turnstile" data-sitekey="0x4AAAAAAARcYrR12jJAIfCB"></div> -->
+
+
+        <!-- Lua Session navigation bar -->
+        <div class="notepad-top">
+            <ul id="lua-sessions">
+            </ul>
+            <ul id="lua-top-mobile">
+                <li style="    
+display: block;
+height: 100%;
+padding: 5px;"><div style="
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-color: #252525;
+    border-radius: 12px;
+    padding: 2px;">
+                    </div>
+                    <span style="color: var(--white); margin-left: 42px; margin-top: 5px; position: absolute;"> - LuaObfuscator</span>
+                </li>
+            </ul>
+        
+            <!-- ACCOUNT START -->
+            <div style="display: flex; margin-right: 12px; height: 100%;">
+                    <form method="POST" action="/forum/OAuth2/Discord">
+                        <input style="cursor: pointer;" class="pink-btn-light" type="submit" value="Login">
+                    </form>
+            </div>
+            <!-- ACCOUNT END -->
+
+        </div>
+        
+        <!-- Lua script playground -->
+        <div class="notepad-script">
+            <div id="toolbox-download-btn" class="big-pink-btn">Download</div>
+            <div class="notepad-lines">
+                <ul id="notepad-lines-ul"></ul>
+            </div>
+            <!--
+            <div id="code-tooltip" style="display: none;" class="tooltip">
+                [Action]
+            </div>
+            -->
+            <pre style="display: block;
+    position: relative;
+    display: inline-table;
+    height: 100%;" class="lasm-script"><div id="err-market-h" style="
+    display: inline-block;
+    position: absolute;
+    background: #ff000069;
+    left: 50px;
+    height: 100%;
+    width: 110px;
+    opacity: 0;
+"></div><div id="err-market-h2" style="
+    display: inline-block;
+    position: absolute;
+    background: #ff000069;
+    left: 50px;
+    height: 100%;
+    width: 110px;
+    opacity: 0;
+"></div><div id="err-market-v" style="
+    display: inline-block;
+    position: absolute;
+    width: 100$;
+    width: 100%;
+    height: 20px;
+    background: #ff000069;
+    top: 324px;
+    opacity: 0;
+"></div><code id="lua-codewindow" class="lang-lua" contenteditable="true" spellcheck="false" style="filter: blur(10px);"></code></pre>
+            <input type="file" id="lua-file" style="display:none">
+        </div>
+        
+        <!-- Console -->
+        <div id="lua-console" class="notepad-bottom" style="display: none;
+    height: 160px;
+    width: 100%;
+    background-color: #181818;">
+            <div style="display: block;
+    width: 100%;
+    height: 100%;
+    /* margin: 3px; */
+    /* padding: 4px; */
+    display: flex;">
+                <ul id="lua-console-ul" style="
+    display: flex;
+    width: 100%;
+    color: dimgray;
+    font-family: consolas;
+    /*background-color: #1E1E1E;*/
+    flex-wrap: nowrap;
+    align-content: stretch;
+    margin: 5px;
+    border: 1px solid black;
+    border-width: 1px 0 0 0;
+    height: auto;
+    padding: 0px 8px 4px 0px;
+    overflow: auto;
+    flex-direction: column-reverse;
+    /*background: url(/img/noise.png);*/
+    font-size: 16px;
+    line-height: 18px;
+    background: #0e0e0e;
+"></ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Main Navigation -->
+    <div id="notepad-toolbox1" class="notepad-toolbox">
+        <!-- Community -->
+        <a style="text-decoration: none;" href="/forum"><div class="toolbox-collapsible collapsible-header">Community</div></a>
+        <div class="notepad-toolbox-spacer">
+
+        </div>
+
+        <!-- All Obfuscation Options, will leave this here until Alpha is over? -->
+        <div class="toolbox-collapsible">All Actions</div>
+        <div class="notepad-toolbox-spacer">
+            <span id="lua-cleanup" class="toolbox-button" style="background-color: red;">CLEANUP</span>
+            <span id="lua-junkif" class="toolbox-button" style="background-color: lightskyblue;">Junk-If</span>
+            <span id="lua-reverseif" class="toolbox-button" style="background-color: lightskyblue;">Reverse-If</span>
+            <span id="lua-cffv1" class="toolbox-button" style="background-color: lightskyblue;">CFF v1*</span>
+            <span id="lua-encfdec" class="toolbox-button" style="background-color: lightskyblue;">Enc Func Dec</span>
+            <span id="lua-swizzle" class="toolbox-button" style="background-color: lightskyblue;">Swizzle</span>
+            <span id="lua-literals" class="toolbox-button" style="background-color: lightskyblue;">Literals</span>
+            <span id="lua-mbav1" class="toolbox-button" style="background-color: lightskyblue;">MBAv1</span>
+            <span id="lua-strings" class="toolbox-button" style="background-color: lightskyblue;">Strings</span>
+            <span id="lua-tableindirection" class="toolbox-button" style="background-color: lightskyblue;">Table Indirection</span>
+            <span id="lua-bit32" class="toolbox-button" style="background-color: lightskyblue;">Add bit32</span>
+            <span id="lua-rmPLH" class="toolbox-button" style="background-color: lightskyblue;">Remove LPH Macros</span>
+            <span id="lua-minify" class="toolbox-button" style="background-color: lightskyblue;">Minify*</span>
+            <span id="lua-beautify" class="toolbox-button" style="background-color: lightskyblue;">Beautify</span>
+            <span id="lua-luamina-push" class="toolbox-button" style="background-color: darkcyan;"><i>Lua</i>mina PUSH</span>
+            <span id="lua-luamina-pull" class="toolbox-button" style="background-color: darkcyan;"><i>Lua</i>mina PULL</span>
+            <span id="lua-demo_vm" class="toolbox-button" style="background-color: rgb(46, 162, 235);">Demo VM*</span>
+            <span id="lua-reset" class="toolbox-button" style="background-color: yellowgreen;">RESET�&nbsp;</span>
+            <p style="color: indianred; bottom:0px">*Experimental</p>
+        </div>
+
+        <!-- Pre-defined obfuscation configs -->
+        <div class="toolbox-collapsible toolbox-hit">Obfuscation</div>
+        <div style="display: block;" class="notepad-toolbox-spacer">
+            <!--<span id="lua-pre-6" class="toolbox-button" style="background-color: red;">Virtualized Good</span>-->
+            <!--<span id="lua-pre-6" class="toolbox-button" style="background-color: red;">Virtualized Basic</span>-->
+            <span id="lua-pre-0" class="toolbox-button" style="background-color: darkred;">Dystropic Malevolence</span>
+            <span id="lua-pre-1" class="toolbox-button" style="background-color: orangered;">Chaotic Evil</span>
+            <span id="lua-pre-2" class="toolbox-button" style="background-color: orange;">Chaotic Good</span>
+            <!--<span id="lua-pre-5" class="toolbox-button" style="background-color: yellowgreen;">Virtualized Fast</span>-->
+            <!-- Lets face it, skids wont know which button if I didn't mark it -->
+            <span id="lua-pre-6" class="toolbox-button" style="
+font-size: 28px; 
+font-weight: 700;
+background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-color: yellowgreen;
+border: 2px solid yellowgreen;
+box-shadow: inset 0px 0 4px yellowgreen;
+text-align: center;
+">OBFUSCATE v1</span>
+            <span id="lua-pre-5" class="toolbox-button" style="background-color: yellowgreen;">OBFUSCATE (old)</span>
+            <span id="lua-pre-3" class="toolbox-button" style="background-color: greenyellow;">Basic Good</span>
+            <span id="lua-pre-4" class="toolbox-button" style="background-color: lightgreen;">Basic Minimal </span>
+            <span id="lua-beautify3" class="toolbox-button" style="background-color: lightskyblue;">Beautify</span>
+            <span style="margin-top: 15px; color:white; text-align: center" id="lua-makesus" class="toolbox-button toolbox-button-rgb"><span style="width: 100%;
+    display: inline-block;
+    line-height: 32px;
+    background: #5c258d;
+    background: -webkit-linear-gradient( to right bottom, #4389a2, #5c258d );
+    background: linear-gradient( to right bottom, #4389a2, #5c258d );
+    border-radius: 25px;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}"><img style="float:left" width="32" height="32" src="images/kindasus.webp">Make Sus<img style="transform: scaleX(-1); float:right;" width="32" height="32" src="images/kindasus.webp"></span></span>
+            <!--
+            <span style="display:block; width: 230px; margin-top: 15px; color:white;">
+                <input name="lua-version" id="rad-roblox" type="radio" value="roblox" checked />
+                <label for="rad-roblox">Roblox</label><br/>
+                <input name="lua-version" id="rad-fivem" type="radio" value="roblox"/>
+                <label for="rad-fivem">FiveM</label><br />
+                <input name="lua-version" id="rad-lua51" type="radio" value="roblox"/>
+                <label for="rad-lua51">Lua 5.1</label><br/>
+                <input name="lua-version" id="rad-wow" type="radio" value="roblox"/>
+                <label for="rad-wow">Wow</label><br />
+                <input name="lua-version" id="rad-GG" type="radio" value="roblox"/>
+                <label for="rad-GG">GG</label><br />
+            </span>
+            -->
+
+
+        </div>
+
+        <!-- Miscellaneous -->
+        <div class="toolbox-collapsible">Miscellaneous</div>
+        <div class="notepad-toolbox-spacer">
+            <span id="lua-copytoclipboard" class="toolbox-button" style="background-color: lightskyblue;">Copy to clipboard</span>
+            <span id="lua-evaluate" class="toolbox-button" style="background-color: lightskyblue;">Evaluate Performance 😳</span>
+            <span id="lua-beautify2" class="toolbox-button" style="background-color: lightskyblue;">Beautify</span>
+            <span id="lua-minify2" class="toolbox-button" style="background-color: lightskyblue;">Minify</span>
+            <span id="lua-undo" class="toolbox-button" style="background-color: mediumpurple;">Undo</span>
+            <span id="lua-undoAll" class="toolbox-button" style="background-color: mediumpurple;">Undo ALL</span>
+            <span id="lua-reset2" class="toolbox-button" style="background-color: yellowgreen;">RESET�&nbsp;</span>
+        </div>
+
+        <!-- Test Deobfuscation Stuff -->
+        
+        <!-- Experimental -->
+        <div class="toolbox-collapsible" style="color: #ff6969!important">Experimental</div>
+        <div class="notepad-toolbox-spacer">
+            <span id="lua-variables" class="toolbox-button" style="background-color: lightskyblue;">Locals**</span>
+            <span id="lua-glookup" class="toolbox-button" style="background-color: lightskyblue;">_G lookup*</span>
+            <span id="lua-cffv1-exp" class="toolbox-button" style="background-color: lightskyblue;">CFF v1*</span>
+            <span id="lua-ssa" class="toolbox-button" style="background-color: lightskyblue;">SSA-ish</span>
+            <span id="lua-transpile51" class="toolbox-button" style="background-color: lightskyblue;">To lua 5.1</span>
+            <span id="lua-const" class="toolbox-button" style="background-color: lightskyblue;">LPH_CONST macro</span>
+            <span id="lua-demo_vm-exp" class="toolbox-button" style="background-color: rgb(46, 162, 235);">Demo VM*</span>
+            <span id="lua-wpacker" class="toolbox-button" style="background-color: rgb(46, 162, 235);">WPacker*</span>
+            <!--<span id="lua-virtualize" class="toolbox-button" style="background-color: rgb(46, 162, 235);">Virtualize</span>-->
+            <!--<span id="lua-devirtualize" class="toolbox-button" style="background-color: rgb(235, 46, 219);">Devirtualize</span>-->
+            <!--<span id="lua-emulate" class="toolbox-button" style="background-color: chartreuse;">Execute</span>-->
+            <p style="color: indianred; bottom:0px">*Might break</p>
+            <p style="color: indianred; bottom:0px">**Will break</p>
+        </div>
+
+        <div class="toolbox-collapsible toolbox-stats">
+            <span style="font-size: 26px; line-height: 30px;">
+                <div style="display:inline-block; margin-top: 5px;">
+                            <img style="float: left;" src="images/count_0.png" width="16" height="21">
+                            <img style="float: left;" src="images/count_0.png" width="16" height="21">
+                            <img style="float: left;" src="images/count_0.png" width="16" height="21">
+                            <img style="float: left;" src="images/count_0.png" width="16" height="21">
+                            <img style="float: left;" src="images/count_0.png" width="16" height="21">
+                            <img style="float: left;" src="images/count_0.png" width="16" height="21">
+                </div>
+            </span>
+        </div>
+        <div class="notepad-toolbox-spacer">
+            <span style="position:absolute; color: lightgreen; font-style: italic;">0 files have been obfuscated in the last 30 days</span>
+        </div>
+        
+        
+
+
+    </div>
+    
+    <!-- MAIN CONTENT END -->
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(event) {
+        let fireContainer = document.getElementById("fire-container");
+        function createParticles(fireContainer, num, leftSpacing) {
+            for (let i = 0; i < num; i += 1) {
+                let particle = document.createElement("div");
+                particle.style.left = `calc((100% - 5em) * ${i / leftSpacing})`;
+                particle.setAttribute("class", "particle");
+                particle.style.animationDelay = 4 * Math.random() + "s";
+                fireContainer.appendChild(particle);
+            }
+        }
+
+        // fire
+        createParticles(fireContainer, 90, 60);
+
+        // cogwheels
+        var wheelA = document.getElementById("cogwheel_a");
+        var wheelB = document.getElementById("cogwheel_b");
+        console.log("wheels: ", wheelA, wheelB)
+        var homescroll = document.getElementById("home-scroll")
+        homescroll.addEventListener("scroll", function () {
+            var value = homescroll.scrollTop * 0.1;
+            console.log(value)
+            wheelA.style.transform = `rotate(${value}deg)`;
+            value = value * 2;
+            wheelB.style.transform = `rotate(-${value}deg)`;
+        });
+
+        
+
+
+            // init turnstile
+            window.turnstileCallback = function (token) {
+                let waitbanner = document.getElementById("wait-banner");
+                let newfile = document.getElementById("btn-demo");
+                let uploadfile = document.getElementById("btn-uploadfile");
+
+                waitbanner.style.display = "none"
+                newfile.style.cursor = "pointer"
+                uploadfile.style.cursor = "pointer"
+                newfile.disabled = false
+                uploadfile.disabled = false
+                newfile.classList.remove("btn-disabled");
+                uploadfile.classList.remove("btn-disabled");
+            }
+            window.onloadTurnstileCallback = function() {
+                turnstile.render(document.getElementById("cf-turnstile"), {
+                    sitekey: '0x4AAAAAAARcYrR12jJAIfCB',
+                    callback: turnstileCallback,
+                })
+            }
+                });
+</script>
+
+    <script src="js/api.js" async="" defer=""></script> 
+
+    </div>
+
+    <script defer="" src="js/luaEngine.js"></script>
+    <script defer="" src="js/index.js"></script>
+    
+    <script>
+        var maincontainer = document.getElementsByClassName('main-container')[0];
+        var notepadbody = document.getElementsByClassName('notepad-body')[0];
+        const observer = new MutationObserver(function (mutations, observer) {
+            maincontainer.style.height = "100%";
+            if (notepadbody != null)
+                notepadbody.style.height = "100%";
+        });
+        observer.observe(maincontainer, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+    </script>
+
+</body></html>
